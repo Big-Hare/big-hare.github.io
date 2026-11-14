@@ -3,7 +3,8 @@ const projects = {
     label: "PROJECT NOTE / 001", eyebrow: "WEB · BIRDS · EDUCATION",
     title: "Nankai Birdfun",
     description: "A campus birding project that grew into a bilingual digital field guide. It brings together bird observations, species information, QR-linked pages, and a little help from code to make the birds around campus easier to notice.",
-    tags: ["WEB DEVELOPMENT", "BIRDING", "NODE.JS", "EDUCATION"]
+    tags: ["WEB DEVELOPMENT", "BIRDING", "NODE.JS", "EDUCATION"],
+    url: "https://nankai-birds.com/"
   },
   vocab: {
     label: "PROJECT NOTE / 002", eyebrow: "SOFTWARE · LANGUAGE",
@@ -83,11 +84,18 @@ function showProject(key) {
     tags.append(chip);
   });
 
-  const button = document.createElement("button");
+  const button = project.url ? document.createElement("a") : document.createElement("button");
   button.className = "detail-button";
-  button.type = "button";
-  button.disabled = true;
-  button.textContent = "DETAILED PROJECT PAGE — IN PROGRESS";
+  if (project.url) {
+    button.href = project.url;
+    button.target = "_blank";
+    button.rel = "noreferrer";
+    button.textContent = "VISIT THE WEBSITE ↗";
+  } else {
+    button.type = "button";
+    button.disabled = true;
+    button.textContent = "DETAILED PROJECT PAGE — IN PROGRESS";
+  }
 
   const foot = document.createElement("div");
   foot.className = "window-foot";
