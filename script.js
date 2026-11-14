@@ -103,3 +103,31 @@ function showProject(key) {
 projectButtons.forEach(button => {
   button.addEventListener("click", () => showProject(button.dataset.project));
 });
+
+
+// Contact menu and copyable email dialog.
+const contactMenu = document.querySelector(".contact-menu");
+const emailDialog = document.querySelector("#email-dialog");
+const openEmail = document.querySelector("#open-email");
+const closeEmail = document.querySelector("#close-email");
+const copyEmail = document.querySelector("#copy-email");
+const emailAddress = document.querySelector("#email-address");
+const copyStatus = document.querySelector("#copy-status");
+
+openEmail?.addEventListener("click", () => {
+  if (contactMenu) contactMenu.open = false;
+  emailDialog?.showModal();
+});
+closeEmail?.addEventListener("click", () => emailDialog?.close());
+emailDialog?.addEventListener("click", event => {
+  if (event.target === emailDialog) emailDialog.close();
+});
+copyEmail?.addEventListener("click", async () => {
+  const address = emailAddress?.textContent?.trim() || "";
+  try {
+    await navigator.clipboard.writeText(address);
+    copyStatus.textContent = "COPIED TO CLIPBOARD ✓";
+  } catch {
+    copyStatus.textContent = "PLEASE SELECT AND COPY THE EMAIL ABOVE.";
+  }
+});
