@@ -144,3 +144,29 @@ body,.desktop-shell,button,input{font-family:'IBM Plex Mono',monospace}
  .window-content h2,.about-strip h2{font-size:26px}
  .window-description,.about-strip p{font-size:10px}
 }
+
+
+/* --- Fine typography and spacing pass --- */
+.intro-strip h1{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:clamp(34px,5vw,52px);
+  font-weight:700;
+  letter-spacing:-.085em;
+}
+.intro-strip h1 span{font-weight:700}
+.project-item{
+  padding:24px 14px 15px;
+}
+.item-title{
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:clamp(17px,1.7vw,23px);
+  font-weight:400;
+  line-height:1.25;
+  letter-spacing:0;
+}
+.window-content>.window-foot{display:none}
+@media(max-width:700px){
+  .intro-strip h1{font-size:clamp(27px,7vw,40px);font-weight:700}
+  .project-item{padding:21px 12px 13px}
+  .item-title{font-family:'Special Elite','Courier New',monospace;font-size:18px}
+}
