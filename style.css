@@ -170,3 +170,6 @@ body,.desktop-shell,button,input{font-family:'IBM Plex Mono',monospace}
   .project-item{padding:21px 12px 13px}
   .item-title{font-family:'Special Elite','Courier New',monospace;font-size:18px}
 }
+\n
+.project-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.project-actions .detail-button{display:inline-flex;align-items:center;text-decoration:none}
