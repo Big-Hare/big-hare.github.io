@@ -38,7 +38,10 @@ const projects = {
     label: "PROJECT NOTE / 006", eyebrow: "ROBOTICS · CAD · CONTROL",
     title: "VEX Robotics",
     description: "A team robotics project involving mechanism design, assembly, competition preparation, engineering documentation, and autonomous control. One particularly satisfying rabbit hole: using gyro feedback and PID control to make autonomous turns more consistent.",
-    tags: ["VEX V5", "ROBOTICS", "PID CONTROL", "MECHANISMS"]
+    tags: ["VEX V5", "ROBOTICS", "PID CONTROL", "MECHANISMS"],
+    links: [
+      { label: "PUSH BACK SEASON ENGINEERING LOG", url: "assets/vex/99236k_engineering_log_push_back.pdf" }
+    ]
   },
   hamilton: {
     label: "PROJECT NOTE / 007", eyebrow: "LIGHTING · PROPS · STAGECRAFT",
