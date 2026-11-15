@@ -7,10 +7,14 @@ const projects = {
     url: "https://nankai-birds.com/"
   },
   vocab: {
-    label: "PROJECT NOTE / 002", eyebrow: "SOFTWARE · LANGUAGE",
+    label: "PROJECT NOTE", eyebrow: "SOFTWARE · EDUCATION · FULL-STACK",
     title: "Vocabulary Trainer",
-    description: "A small language-learning tool built to make vocabulary practice more interactive and useful. The project is part of an ongoing collection of experiments in programming and learning tools.",
-    tags: ["SOFTWARE", "JAVASCRIPT", "LANGUAGE LEARNING"]
+    description: "A full-stack vocabulary-learning application built to make English word practice more interactive and organized. It pairs a React frontend with a Node.js and Express backend, using SQLite to manage vocabulary and learning data. The app runs locally and brings its study and quiz features together in one place.",
+    tags: ["SOFTWARE", "EDUCATION", "FULL-STACK"],
+    links: [
+      { label: "FRONTEND REPOSITORY", url: "https://github.com/Big-Hare/toefl-vocabulary-app_frontend" },
+      { label: "BACKEND REPOSITORY", url: "https://github.com/Big-Hare/toefl-vocabulary-app" }
+    ]
   },
   twoey: {
     label: "PROJECT NOTE / 003", eyebrow: "ARDUINO · PUPPETRY · THEATRE",
@@ -84,17 +88,32 @@ function showProject(key) {
     tags.append(chip);
   });
 
-  const button = project.url ? document.createElement("a") : document.createElement("button");
-  button.className = "detail-button";
-  if (project.url) {
-    button.href = project.url;
-    button.target = "_blank";
-    button.rel = "noreferrer";
-    button.textContent = "VISIT THE WEBSITE ↗";
+  const actions = document.createElement("div");
+  actions.className = "project-actions";
+  if (project.links?.length) {
+    project.links.forEach(link => {
+      const anchor = document.createElement("a");
+      anchor.className = "detail-button";
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noreferrer";
+      anchor.textContent = link.label + " ↗";
+      actions.append(anchor);
+    });
   } else {
-    button.type = "button";
-    button.disabled = true;
-    button.textContent = "DETAILED PROJECT PAGE — IN PROGRESS";
+    const button = project.url ? document.createElement("a") : document.createElement("button");
+    button.className = "detail-button";
+    if (project.url) {
+      button.href = project.url;
+      button.target = "_blank";
+      button.rel = "noreferrer";
+      button.textContent = "VISIT THE WEBSITE ↗";
+    } else {
+      button.type = "button";
+      button.disabled = true;
+      button.textContent = "DETAILED PROJECT PAGE — IN PROGRESS";
+    }
+    actions.append(button);
   }
 
   const foot = document.createElement("div");
@@ -105,7 +124,7 @@ function showProject(key) {
   mark.textContent = "✳";
   foot.append(note, mark);
 
-  windowContent.append(eyebrow, title, description, tags, button, foot);
+  windowContent.append(eyebrow, title, description, tags, actions, foot);
 }
 
 projectButtons.forEach(button => {
